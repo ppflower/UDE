@@ -1,0 +1,999 @@
+{
+    "username": [
+        {
+            "lexicons": [
+                "username",
+                "middlename",
+                "secondname",
+                "newname",
+                "truename",
+                "aliasname",
+                "nick",
+                "uname",
+                "fname",
+                "newusername",
+                "lastname",
+                "firstname",
+                "mname",
+                "displayname",
+                "fullname",
+                "accountname",
+                "nickname",
+                "lname",
+                "realname"
+            ],
+            "values": {
+                "java.lang.String": ["Bluce Lee"]
+            }
+        }
+    ],
+    "birthday": [
+        {
+            "lexicons": [
+                "birth",
+                "birthday",
+                "dob",
+                "birthdate",
+                "dateofbirth",
+                "dayofbirth",
+                "datebirth"
+            ],
+            "values": {
+                "java.lang.String": ["20000101", "2000-01-01","2000/01/01"],
+                "int": [946656000],
+                "long": [946656000]
+            }
+        },
+        {
+            "lexicons": [
+                "constellation",
+                "birthmonth"
+            ],
+            "values": {
+                "byte": [5],
+                "short": [5],
+                "int": [5],
+                "java.lang.String": ["Jan", "January"]
+            }
+        },
+        {
+            "lexicons": [
+                "birthyear"
+            ],
+            "values": {
+                "short": [2000],
+                "int": [2000],
+                "java.lang.String": ["2000"]
+            }
+        }
+    ],
+    "birthplace": [
+        {
+            "lexicons": [
+                "placeofbirth",
+                "birthplace"
+            ],
+            "values": {
+                "byte": [21],
+                "short": [21],
+                "int": [21],
+                "java.lang.String": ["China", "CN"]
+            }
+        }
+    ],
+    "age": [
+        {
+            "lexicons": [
+                "age",
+                "agemaxage",
+                "maxage",
+                "agemax",
+                "minage",
+                "agemin"
+            ],
+            "values": {
+                "byte": [27],
+                "short": [27],
+                "int": [27],
+                "java.lang.String": ["27"]
+            }
+        }
+    ],
+    "user_image": null,
+    "gender": [
+        {
+            "lexicons": [
+                "sexuality",
+                "gender",
+                "sex",
+                "sexid"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["male", "female", "m", "f"]
+            }
+        }
+    ],
+    "race": [
+        {
+            "lexicons": [
+                "race",
+                "racial",
+                "ethnicity"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["Asian"]
+            }
+        }
+    ],
+    "language": [
+        {
+            "lexicons": [
+                "language",
+                "languagevalue"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["Chinese"]
+            }
+        }
+    ],
+    "religion": [
+        {
+            "lexicons": [
+                "religious",
+                "religion",
+                "faith",
+                "belief"
+            ],
+            "values": {
+                "byte": [2],
+                "short": [2],
+                "int": [2],
+                "java.lang.String": ["Christianity", "Christian"]
+            }
+        }
+    ],
+    "education_info": [
+        {
+            "lexicons": [
+                "educationschool",
+                "educschool",
+                "academy",
+                "school",
+                "university",
+                "college",
+                "universityname"
+            ],
+            "values": {
+                "java.lang.String": ["Stanford"]
+            }
+        }
+    ],
+    "job_info": [
+        {
+            "lexicons": [
+                "profession",
+                "workexperience",
+                "jobtitle",
+                "occupation",
+                "career",
+                "job",
+                "work",
+                "expertise"
+            ],
+            "values": {
+                "java.lang.String": ["Teacher", "Administration Staff"]
+            }
+        },
+        {
+            "lexicons": [
+                "workstartdate",
+                "workenddate"
+            ],
+            "values": {
+                "int": [946656000, 1618818911],
+                "long": [946656000, 1618818911],
+                "java.lang.String": ["20000101", "2000-01-01", "2000/01/01", "946656000", "1618818911"]
+            }
+        }
+    ],
+    "company_info": [
+        {
+            "lexicons": [
+                "workcompany",
+                "company",
+                "companytitle",
+                "organization",
+                "organisation",
+                "division",
+                "office"
+            ],
+            "values": {
+                "java.lang.String": ["Walmart"]
+            }
+        }
+    ],
+    "balance": [
+        {
+            "lexicons": [
+                "balance"
+            ],
+            "values": {
+                "int": [5, 67, 234, 4321, 7654321],
+                "float": [5.1, 67.89, 234.56, 4321.567],
+                "double": [5.1, 67.89, 234.56, 4321.567, 7654321.123],
+                "java.lang.String": ["5", "67", "234", "4321", "7654321", "5.6", "67.89", "234.56", "4321.567", "7654321.123"]
+            }
+        }
+    ],
+    "income": [
+        {
+            "lexicons": [
+                "salary",
+                "income",
+                "videoincome",
+                "annualincome",
+                "benefit",
+                "wage",
+                "earnings"
+            ],
+            "values": {
+                "int": [5, 67, 234, 4321, 7654321],
+                "float": [5.1, 67.89, 234.56, 4321.567],
+                "double": [5.1, 67.89, 234.56, 4321.567, 7654321.123],
+                "java.lang.String": ["5", "67", "234", "4321", "7654321", "5.6", "67.89", "234.56", "4321.567", "7654321.123"]
+            }
+        }
+    ],
+    "debt": null,
+    "bank_info": [
+        {
+            "lexicons": [
+                "bank",
+                "banking"
+            ],
+            "values": {
+                "java.lang.String": ["Bank of America"]
+            }
+        }
+    ],
+    "marriage": [
+        {
+            "lexicons": [
+                "marital",
+                "marriage",
+                "marry"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["single"]
+            }
+        }
+    ],
+    "biometrical_data": [
+        {
+            "lexicons": [
+                "bloodtype"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["B"]
+            }
+        },
+        {
+            "lexicons": [
+                "bmi"
+            ],
+            "values": {
+                "byte": [22],
+                "short": [22],
+                "int": [22],
+                "java.lang.String": ["22"]
+            }
+        },
+        {
+            "lexicons": [
+                "bloodpressure"
+            ],
+            "values": {
+                "byte": [80],
+                "short": [80],
+                "int": [80],
+                "java.lang.String": ["80"]
+            }
+        },
+        {
+            "lexicons": [
+                "bodytemperature"
+            ],
+            "values": {
+                "byte": [37],
+                "short": [37],
+                "int": [37],
+                "float": [37.2],
+                "double": [37.2],
+                "java.lang.String": ["80", "37.2"]
+            }
+        },
+        {
+            "lexicons": [
+                "bodyfat"
+            ],
+            "values": {
+                "byte": [22],
+                "short": [22],
+                "int": [22],
+                "float": [0.22],
+                "double": [0.22],
+                "java.lang.String": ["22", "0.22"]
+            }
+        },
+        {
+            "lexicons": [
+                "heartrate"
+            ],
+            "values": {
+                "byte": [81],
+                "short": [81],
+                "int": [81],
+                "java.lang.String": ["81"]
+            }
+        }
+    ],
+    "user_preference": [
+        {
+            "lexicons": [
+                "interestedin",
+                "hobby",
+                "favourite",
+                "favorite",
+                "favorites",
+                "interest"
+            ],
+            "values": {
+                "byte": [10],
+                "short": [10],
+                "int": [10],
+                "java.lang.String": ["Drawing"]
+            }
+        },
+        {
+            "lexicons": [
+                "wantchild"
+            ],
+            "values": {
+                "byte": [0],
+                "short": [0],
+                "int": [0],
+                "boolean": [true],
+                "java.lang.String": ["0"]
+            }
+        },
+        {
+            "lexicons": [
+                "smoking"
+            ],
+            "values": {
+                "byte": [0],
+                "short": [0],
+                "int": [0],
+                "boolean": [true],
+                "java.lang.String": ["0"]
+            }
+        },
+        {
+            "lexicons": [
+                "drinking"
+            ],
+            "values": {
+                "byte": [0],
+                "short": [0],
+                "int": [0],
+                "boolean": [true],
+                "java.lang.String": ["0"]
+            }
+        },
+        {
+            "lexicons": [
+                "food",
+                "diet"
+            ],
+            "values": {
+                "java.lang.String": ["Apple"]
+            }
+        }
+    ],
+    "body": [
+        {
+            "lexicons": [
+                "height"
+            ],
+            "values": {
+                "byte": [172],
+                "short": [172],
+                "int": [172],
+                "java.lang.String": ["172", "5'11"]
+            }
+        },
+        {
+            "lexicons": [
+                "weight",
+                "hairlength"
+            ],
+            "values": {
+                "byte": [65],
+                "short": [65],
+                "int": [65],
+                "java.lang.String": ["65"]
+            }
+        },
+        {
+            "lexicons": [
+                "haircolor",
+                "eyecolor"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["brown"]
+            }
+        },
+        {
+            "lexicons": [
+                "bodytype"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["atheletic", "slim"]
+            }
+        }
+    ],
+    "passcode": null,
+    "phone_number": [
+        {
+            "lexicons": [
+                "phonenumber",
+                "phone",
+                "mobile",
+                "telephone",
+                "contactnumber",
+                "cell",
+                "phonenum",
+                "cellnumber",
+                "phoneno",
+                "homephone",
+                "smartphones",
+                "telephony",
+                "phonecode",
+                "telphone",
+                "bindphone",
+                "cellphone",
+                "mobileno",
+                "workphone"
+            ],
+            "values": {
+                "java.lang.String": ["001-415-5787342", "0014155787342", "15802112097", "+8615802112097"]
+            }
+        }
+    ],
+    "mail_address": [
+        {
+            "lexicons": [
+                "emailaddress",
+                "mail",
+                "useremail",
+                "voicemail",
+                "emailid",
+                "gmail",
+                "email",
+                "contactemail",
+                "mailbox",
+                "memberemail"
+            ],
+            "values": {
+                "java.lang.String": ["hn289891704@gmail.com"]
+            }
+        }
+    ],
+    "geo_location": [
+        {
+            "lexicons": [
+                "locationaddress",
+                "currentlocation",
+                "inferredlocation",
+                "loc",
+                "location",
+                "celllocation",
+                "gps",
+                "geolocation",
+                "lastlocation",
+                "geoplace",
+                "geoip",
+                "geopoint"
+            ],
+            "values": {
+                "int": [21, 35],
+                "float": [21.49468, 35.30086],
+                "double": [21.49468, 35.30086],
+                "java.lang.String": ["(21.49468,35.30086)", "21.49468,31.30086", "21.49468", "35.30086", "21", "35"]
+            }
+        },
+        {
+            "lexicons": [
+                "longitude",
+                "lon",
+                "lng",
+                "latitude",
+                "lat",
+                "altitude"
+            ],
+            "values": {
+                "int": [21],
+                "float": [21.49468],
+                "double": [21.49468],
+                "java.lang.String": ["21.49468", "21"]
+            }
+        },
+        {
+            "lexicons": [
+                "altitude"
+            ],
+            "values": {
+                "int": [2150],
+                "float": [2000.123],
+                "double": [2000.123],
+                "java.lang.String": ["2000.123", "2150"]
+            }
+        }
+    ],
+    "ip_address": [
+        {
+            "lexicons": [
+                "serverip",
+                "ipaddress",
+                "clientip",
+                "ipaddr",
+                "ip"
+            ],
+            "values": {
+                "java.lang.String": ["202.120.234.144", "2001:da8:8001:7a82:984d:cf13:4e8f:8b1e"]
+            }
+        }
+    ],
+    "license": [
+        {
+            "lexicons": [
+                "passport",
+                "socialsecuritycode",
+                "socialsecuritynumber",
+                "license",
+                "driverlicense",
+                "socialsecurity",
+                "ssn",
+                "ssc",
+                "licensing"
+            ],
+            "values": {
+                "java.lang.String": ["367-38-0267"]
+            }
+        }
+    ],
+    "device_info": [
+        {
+            "lexicons": [
+                "imei"
+            ],
+            "values": {
+                "java.lang.String": ["356535052046914"]
+            }
+        },
+        {
+            "lexicons": [
+                "androidid"
+            ],
+            "values": {
+                "java.lang.String": ["608ce0c8dbd30690"]
+            }
+        },
+        {
+            "lexicons": [
+                "imsi"
+            ],
+            "values": {
+                "java.lang.String": ["222881758334818"]
+            }
+        },
+        {
+            "lexicons": [
+                "deviceos",
+                "appplatform",
+                "system"
+            ],
+            "values": {
+                "java.lang.String": ["Android", "iOS"]
+            }
+        },
+        {
+            "lexicons": [
+                "client",
+                "devicetype",
+                "phonebrand"
+            ],
+            "values": {
+                "java.lang.String": ["iPhone", "Samsung"]
+            }
+        }
+    ],
+    "simcard_info": [
+        {
+            "lexicons": [
+                "sim",
+                "simserial",
+                "simserialnumber"
+            ],
+            "values": {
+                "java.lang.String": ["89124613608514055012"]
+            }
+        }
+    ],
+    "card_info": [
+        {
+            "lexicons": [
+                "cardidnumber",
+                "cardno",
+                "cardnum",
+                "cardnumber",
+                "cardid",
+                "creditcardnumber",
+                "creditcard",
+                "credit",
+                "ccn",
+                "cardnumb"
+            ],
+            "values": {
+                "java.lang.String": ["4938092906518200"]
+            }
+        }
+    ],
+    "user_social_identifier": [
+        {
+            "lexicons": [
+                "amazonid",
+                "twitterid",
+                "thirdpartyid",
+                "socialmediaidentifier",
+                "socialidentifier",
+                "linenumber",
+                "paypal",
+                "googleid",
+                "fbid",
+                "facebookid",
+                "facebook",
+                "fb",
+                "fbuid",
+                "twitter",
+                "twitterurl",
+                "weixin",
+                "wechat",
+                "qq",
+                "icq",
+                "whatsapp",
+                "amazon",
+                "baidu",
+                "instagram",
+                "microsoft",
+                "telegram",
+                "tiktok",
+                "youtube",
+                "linkedin",
+                "weibo",
+                "googleaccount"
+            ],
+            "values": {
+                "java.lang.String": ["0014155787342", "bluce_lee", "Bluce Lee", "bluce.lee@gmail.com"]
+            }
+        }
+    ],
+    "user_identifier": null,
+    "user_account": null,
+    "event_timestamp": [
+        {
+            "lexicons": [
+                "updatetime",
+                "expiretime",
+                "visittime",
+                "createtime",
+                "expirestime",
+                "expiredtime",
+                "regtime",
+                "endtime",
+                "publishtime",
+                "arrivaltime",
+                "starttime",
+                "invitetime",
+                "logintime",
+                "lastlogin",
+                "lastonline",
+                "appstarttimestamp"
+            ],
+            "values": {
+                "int": [946656000, 1618818911],
+                "long": [946656000, 946656000123, 1618818911],
+                "java.lang.String": ["946656000", "946656000123", "1618818911"]
+            }
+        }
+    ],
+    "event_date": [
+        {
+            "lexicons": [
+                "createdate",
+                "updatedate",
+                "expiringdate",
+                "expiration",
+                "expirationday",
+                "expire",
+                "expirationdate"
+            ],
+            "values": {
+                "int": [946656000, 1618818911],
+                "long": [946656000, 1618818911],
+                "java.lang.String": ["20000101", "2000-01-01", "2000/01/01", "946656000", "1618818911"]
+            }
+        }
+    ],
+    "user_address": [
+
+        {
+            "lexicons": [
+                "hometown",
+                "town"
+            ],
+            "values": {
+                "byte": [21],
+                "short": [21],
+                "int": [21],
+                "java.lang.String": ["Venice"]
+            }
+        },
+        {
+            "lexicons": [
+                "continent"
+            ],
+            "values": {
+                "byte": [1],
+                "short": [1],
+                "int": [1],
+                "java.lang.String": ["Europe", "EUR"]
+            }
+        },
+        {
+            "lexicons": [
+                "nationality",
+                "nation",
+                "country",
+                "countryid",
+                "countrycode"
+            ],
+            "values": {
+                "byte": [86],
+                "short": [86],
+                "int": [86],
+                "java.lang.String": ["China", "CN", "86"]
+            }
+        },
+        {
+            "lexicons": [
+                "province",
+                "provincecode"
+            ],
+            "values": {
+                "byte": [21],
+                "short": [21],
+                "int": [21],
+                "java.lang.String": ["Alabama", "AL", "21"]
+            }
+        },
+        {
+            "lexicons": [
+                "cityid",
+                "citycode",
+                "city",
+                "cityname"
+            ],
+            "values": {
+                "byte": [21],
+                "short": [21],
+                "int": [21],
+                "java.lang.String": ["New York", "NY", "21"]
+            }
+        }
+    ],
+    "zipcode": [
+        {
+            "lexicons": [
+                "zip",
+                "statezip",
+                "zipcode",
+                "garagingzip",
+                "zipcd",
+                "postcode",
+                "postalcode"
+            ],
+            "values": {
+                "int": [98001],
+                "java.lang.String": ["98001"]
+            }
+        }
+    ],
+    "distance": [
+        {
+            "lexicons": [
+                "distance",
+                "movementdistance"
+            ],
+            "values": {
+                "int": [5, 67, 234, 4321, 7654321],
+                "float": [5.1, 67.89, 234.56, 4321.567],
+                "double": [5.1, 67.89, 234.56, 4321.567, 7654321.123],
+                "java.lang.String": ["5", "67", "234", "4321", "7654321", "5.6", "67.89", "234.56", "4321.567", "7654321.123"]
+            }
+        }
+    ],
+    "transaction_info": null,
+    "online_status": [
+        {
+            "lexicons": [
+                "online",
+                "onlinestate",
+                "userstate",
+                "contactstatus"
+            ],
+            "values": {
+                "byte": [0],
+                "short": [0],
+                "int": [0],
+                "java.lang.String": ["online"]
+            }
+        }
+    ],
+    "user_token": null,
+    "auth_key": null,
+    "fingerprint": null,
+    "timezone": [
+        {
+            "lexicons": [
+                "timezone",
+                "timezoneid"
+            ],
+            "values": {
+                "byte": [8],
+                "short": [8],
+                "int": [8],
+                "java.lang.String": ["GMT+8"]
+            }
+        }
+    ],
+    "family_info": null,
+    "app_business_data": [
+        {
+            "lexicons": [
+                "vip"
+            ],
+            "values": {
+                "int": [0],
+                "boolean": [true]
+            }
+        },
+        {
+            "lexicons": [
+                "vip",
+                "userlevel",
+                "level",
+                "viplevel",
+                "vipgrade",
+                "reputation"
+            ],
+            "values": {
+                "byte": [12],
+                "short": [12],
+                "int": [12, 1234],
+                "java.lang.String": ["12", "1234"]
+            }
+        }
+    ],
+    "tax": [
+        {
+            "lexicons": [
+                "tax",
+                "shippingtax"
+            ],
+            "values": {
+                "int": [5, 67, 234, 4321, 7654321],
+                "float": [5.1, 67.89, 234.56, 4321.567],
+                "double": [5.1, 67.89, 234.56, 4321.567, 7654321.123],
+                "java.lang.String": ["5", "67", "234", "4321", "7654321", "5.6", "67.89", "234.56", "4321.567", "7654321.123"]
+            }
+        }
+    ],
+    "speed": [
+        {
+            "lexicons": [
+                "speed"
+            ],
+            "values": {
+                "short": [5, 67, 234],
+                "int": [5, 67, 234],
+                "float": [5.1, 67.89, 234.56],
+                "double": [5.1, 67.89, 234.56],
+                "java.lang.String": ["5", "67", "234", "5.6", "67.89", "234.56"]
+            }
+        }
+    ],
+    "vehicle": [
+        {
+            "lexicons": [
+                "vehicle",
+                "carrier"
+            ],
+            "values": {
+                "java.lang.String": ["Acura"]
+            }
+        }
+    ],
+    "verification_code": [
+        {
+            "lexicons": [
+                "securitycode",
+                "invitecode",
+                "invitationcode",
+                "validationcode",
+                "verifycode"
+            ],
+            "values": {
+                "int": [4321, 432156],
+                "java.lang.String": ["4321", "432156"]
+            }
+        }
+    ],
+    "citizen_info": null,
+    "user_experience": null,
+    "shopping_data": null,
+    "relationship": [
+        {
+            "lexicons": [
+                "bifollowecount"
+            ],
+            "values": {
+                "short": [12],
+                "int": [12],
+                "java.lang.String": ["12"]
+            }
+        }
+    ],
+    "philosophy_info": null,
+    "political_preference": null,
+    "faceprint": null,
+    "voiceprint": null,
+    "sns": null,
+    "app_info": null,
+    "activity_record": null,
+    "shipping": null,
+    "transcript": null,
+    "serial_number": null,
+    "advertisement_id": null
+}

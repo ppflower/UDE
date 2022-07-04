@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b15d90f9-e3f9-4f5d-ba98-1fa1afb5013f" name="Changes" comment="Create and push UDE project.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/assigned_values.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/const.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/judge_privacy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/lexicon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/lexicon_type_map.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/lexicon_values.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PrivacyDiscoverer/mutate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/backwardFilter.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/libraries.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-android-classes-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-android-classes-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-android-classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-summaries-classes-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-summaries-classes-test-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-summaries-classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/soot-infoflow-summaries-jar-with-dependencies.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parse_logs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/AppAnalyzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/AppFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/FileTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/backward/BackwardInvokeContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/backward/BackwardTaintAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/backward/InvokeAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/backward/InvokeAnalysisResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/backward/MyBackwardTaintAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/backward/RiskUnitUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/AndroidAsyncHttpClientBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/AsyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/Binder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/CallbackLocator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/FastAndroidNetworkingBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/HttpClientV4AsyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/HttpClientV4SyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/HttpClientV5AsyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/HttpClientV5SyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/HttpUrlConnectionBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/OkHttp3AsyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/OkHttp3SyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/Retrofit2SyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/SyncBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/VolleyBinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/BackwardBinderAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/ForwardBinderAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/MethodNodeAsync.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/MethodNodeSync.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/MustAliasAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/ParamPassAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/ParamTaintAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/binder/anlysis/ResultPassAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/forward/ForwardInvokeContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/forward/ForwardTaintAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/forward/IccTransformer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/forward/MethodAnalysisResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/forward/SyncRequestTaintAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ude/forward/TaintPath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BSdqYddod6qBy6kOyk8E7MbEB6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/flower/IdeaProjects/UDE/UDE/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b15d90f9-e3f9-4f5d-ba98-1fa1afb5013f" name="Changes" comment="" />
+      <created>1656903613255</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656903613255</updated>
+      <workItem from="1656903614663" duration="457000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Create and push UDE project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create and push UDE project." />
+  </component>
+</project>

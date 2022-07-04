@@ -1,0 +1,398 @@
+{
+    "username": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "birthday": [
+        "java.lang.String",
+        "int",
+        "long",
+        "byte",
+        "short",
+        "java.lang.CharSequence",
+        "java.lang.Integer",
+        "java.lang.Long",
+        "java.lang.Byte",
+        "java.lang.Short"
+    ],
+    "birthplace": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "age": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "user_image": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "gender": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "race": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "language": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "religion": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "education_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "job_info": [
+        "java.lang.String",
+        "int",
+        "long",
+        "java.lang.CharSequence",
+        "java.lang.Integer",
+        "java.lang.Long"
+    ],
+    "company_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "balance": [
+        "int",
+        "float",
+        "double",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Float",
+        "java.lang.Double",
+        "java.lang.CharSequence"
+    ],
+    "income": [
+        "int",
+        "float",
+        "double",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Float",
+        "java.lang.Double",
+        "java.lang.CharSequence"
+    ],
+    "debt": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "bank_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "marriage": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "biometrical_data": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "float",
+        "double",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence",
+        "java.lang.Float",
+        "java.lang.Double"
+    ],
+    "user_preference": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "boolean",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence",
+        "java.lang.Boolean"
+    ],
+    "body": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "passcode": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "phone_number": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "mail_address": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "geo_location": [
+        "int",
+        "float",
+        "double",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Float",
+        "java.lang.Double",
+        "java.lang.CharSequence"
+    ],
+    "ip_address": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "license": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "device_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "simcard_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "card_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "user_social_identifier": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "user_identifier": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "user_account": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "event_timestamp": [
+        "int",
+        "long",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Long",
+        "java.lang.CharSequence"
+    ],
+    "event_date": [
+        "int",
+        "long",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Long",
+        "java.lang.CharSequence"
+    ],
+    "user_address": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "zipcode": [
+        "int",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "distance": [
+        "int",
+        "float",
+        "double",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Float",
+        "java.lang.Double",
+        "java.lang.CharSequence"
+    ],
+    "transaction_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "online_status": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "user_token": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "auth_key": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "fingerprint": [],
+    "timezone": [
+        "byte",
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "family_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "app_business_data": [
+        "int",
+        "boolean",
+        "byte",
+        "short",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Boolean",
+        "java.lang.Byte",
+        "java.lang.Short",
+        "java.lang.CharSequence"
+    ],
+    "tax": [
+        "int",
+        "float",
+        "double",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.Float",
+        "java.lang.Double",
+        "java.lang.CharSequence"
+    ],
+    "speed": [
+        "short",
+        "int",
+        "float",
+        "double",
+        "java.lang.String",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.Float",
+        "java.lang.Double",
+        "java.lang.CharSequence"
+    ],
+    "vehicle": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "verification_code": [
+        "int",
+        "java.lang.String",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "citizen_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "user_experience": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "shopping_data": [],
+    "relationship": [
+        "short",
+        "int",
+        "java.lang.String",
+        "java.lang.Short",
+        "java.lang.Integer",
+        "java.lang.CharSequence"
+    ],
+    "philosophy_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "political_preference": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "faceprint": [],
+    "voiceprint": [],
+    "sns": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "app_info": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "activity_record": [],
+    "shipping": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "transcript": [],
+    "serial_number": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ],
+    "advertisement_id": [
+        "java.lang.String",
+        "java.lang.CharSequence"
+    ]
+}

@@ -1,0 +1,618 @@
+{
+    "username": [
+        "username",
+        "middlename",
+        "secondname",
+        "newname",
+        "truename",
+        "aliasname",
+        "nick",
+        "uname",
+        "fname",
+        "newusername",
+        "lastname",
+        "firstname",
+        "mname",
+        "displayname",
+        "fullname",
+        "accountname",
+        "nickname",
+        "lname",
+        "realname"
+    ],
+    "birthday": [
+        "birth",
+        "birthday",
+        "birthyear",
+        "dob",
+        "birthdate",
+        "dateofbirth",
+        "dayofbirth",
+        "datebirth",
+        "zodiac",
+        "birthmonth",
+        "constellation"
+    ],
+    "birthplace": [
+        "placeofbirth",
+        "birthplace"
+    ],
+    "age": [
+        "age",
+        "agemaxage",
+        "maxage",
+        "agemax",
+        "minage",
+        "agemin"
+    ],
+    "user_image": [
+        "headpic",
+        "profilephoto",
+        "userpic",
+        "headphoto",
+        "profileimage",
+        "profilepic",
+        "userphoto",
+        "headimgurl",
+        "headimage",
+        "userimage",
+        "userimgs",
+        "profilepicture",
+        "headimg",
+        "imglist",
+        "avatarurl",
+        "avatar",
+        "fbphoto",
+        "faceimg"
+    ],
+    "gender": [
+        "sexuality",
+        "gender",
+        "sex",
+        "sexid"
+    ],
+    "race": [
+        "race",
+        "racial",
+        "ethnicity"
+    ],
+    "language": [
+        "language",
+        "languagevalue"
+    ],
+    "religion": [
+        "religious",
+        "religion",
+        "faith",
+        "belief"
+    ],
+    "education_info": [
+        "educationyear",
+        "education",
+        "schooltype",
+        "educschooltype",
+        "educationexperience",
+        "educationschool",
+        "educschool",
+        "educyear",
+        "training",
+        "academy",
+        "school",
+        "university",
+        "college",
+        "universityname"
+    ],
+    "job_info": [
+        "workstartdate",
+        "profession",
+        "workexperience",
+        "workenddate",
+        "jobtitle",
+        "worknumber",
+        "employment",
+        "workposition",
+        "workemploy",
+        "employee",
+        "employer",
+        "occupation",
+        "career",
+        "job",
+        "work",
+        "expertise",
+        "certification",
+        "certificate"
+    ],
+    "company_info": [
+        "workcompany",
+        "company",
+        "companytitle",
+        "organization",
+        "organisation",
+        "division",
+        "office"
+    ],
+    "balance": [
+        "balance"
+    ],
+    "income": [
+        "salary",
+        "income",
+        "videoincome",
+        "annualincome",
+        "benefit",
+        "wage",
+        "earnings"
+    ],
+    "debt": [
+        "debt"
+    ],
+    "bank_info": [
+        "bank",
+        "banking"
+    ],
+    "marriage": [
+        "marital",
+        "marriage",
+        "marry"
+    ],
+    "biometrical_data": [
+        "bloodtype",
+        "health",
+        "bodymeasurement",
+        "bmi",
+        "bloodpressure",
+        "bodytemperature",
+        "bodyfat",
+        "heartrate"
+    ],
+    "user_preference": [
+        "wishlist",
+        "favourite",
+        "favouritcount",
+        "interestedin",
+        "hobby",
+        "favorite",
+        "favouritecount",
+        "preferredcontact",
+        "favorites",
+        "interest",
+        "wish",
+        "wantchild",
+        "smoking",
+        "drinking",
+        "habit",
+        "food",
+        "diet"
+    ],
+    "body": [
+        "height",
+        "weight",
+        "haircolor",
+        "eyecolor",
+        "bodytype",
+        "hairlength"
+    ],
+    "passcode": [
+        "loginpwd",
+        "pwd",
+        "password",
+        "passwrd",
+        "curpassword",
+        "loginpassword",
+        "lockpin",
+        "pin",
+        "vpin",
+        "oldpassword",
+        "passwd",
+        "newpassword",
+        "passphrase",
+        "newpasswordfield",
+        "signinpass",
+        "pass",
+        "passcode",
+        "userpassword",
+        "forgotpassword",
+        "resetpassword",
+        "userpwd",
+        "confirmpassword",
+        "pincode"
+    ],
+    "phone_number": [
+        "phonenumber",
+        "phone",
+        "mobile",
+        "telephone",
+        "contactnumber",
+        "cell",
+        "phonenum",
+        "cellnumber",
+        "phoneno",
+        "homephone",
+        "smartphones",
+        "telephony",
+        "phonecode",
+        "telphone",
+        "bindphone",
+        "cellphone",
+        "mobileno",
+        "workphone"
+    ],
+    "mail_address": [
+        "emailaddress",
+        "mail",
+        "useremail",
+        "voicemail",
+        "emailid",
+        "gmail",
+        "email",
+        "contactemail",
+        "mailbox",
+        "memberemail"
+    ],
+    "geo_location": [
+        "locationaddress",
+        "longitude",
+        "currentlocation",
+        "inferredlocation",
+        "loc",
+        "location",
+        "latitude",
+        "celllocation",
+        "gps",
+        "geolocation",
+        "lastlocation",
+        "geoplace",
+        "geoip",
+        "geopoint",
+        "lon",
+        "lng",
+        "lat",
+        "altitude"
+    ],
+    "ip_address": [
+        "serverip",
+        "ipaddress",
+        "clientip",
+        "ipaddr",
+        "ip"
+    ],
+    "license": [
+        "passport",
+        "socialsecuritycode",
+        "socialsecuritynumber",
+        "license",
+        "driverlicense",
+        "socialsecurity",
+        "ssn",
+        "ssc",
+        "licensing"
+    ],
+    "device_info": [
+        "deviceidentifier",
+        "bluetoothaddress",
+        "deviceuuid",
+        "deviceid",
+        "screensize",
+        "ssid",
+        "imei",
+        "devicenumber",
+        "androidid",
+        "imsi",
+        "deviceusage",
+        "deviceos",
+        "macaddress",
+        "hardwareid",
+        "bssid",
+        "appplatform",
+        "devicetype",
+        "system",
+        "client",
+        "phonebrand"
+    ],
+    "simcard_info": [
+        "sim",
+        "simserial",
+        "simserialnumber"
+    ],
+    "card_info": [
+        "cardidnumber",
+        "cardmember",
+        "cardno",
+        "cardnum",
+        "cardhold",
+        "cardtype",
+        "cardnumber",
+        "cardid",
+        "creditcardnumber",
+        "creditcard",
+        "credit",
+        "ccn",
+        "ccv",
+        "cardnumb",
+        "cardholder",
+        "debit"
+    ],
+    "user_social_identifier": [
+        "amazonid",
+        "twitterid",
+        "thirdpartyid",
+        "socialmediaidentifier",
+        "socialidentifier",
+        "linenumber",
+        "paypal",
+        "googleid",
+        "fbid",
+        "facebookid",
+        "facebook",
+        "fb",
+        "fbuid",
+        "twitter",
+        "twitterurl",
+        "weixin",
+        "wechat",
+        "qq",
+        "icq",
+        "whatsapp",
+        "amazon",
+        "baidu",
+        "instagram",
+        "microsoft",
+        "telegram",
+        "tiktok",
+        "youtube",
+        "linkedin",
+        "weibo",
+        "googleaccount"
+    ],
+    "user_identifier": [
+        "subscribeid",
+        "biometricidentifier",
+        "userid",
+        "uid",
+        "subscriberid",
+        "loginid",
+        "loginuserid",
+        "useruuid",
+        "useridx"
+    ],
+    "user_account": [
+        "account",
+        "accountid",
+        "accountnumber",
+        "subaccount",
+        "accountholder"
+    ],
+    "event_timestamp": [
+        "updatetime",
+        "expiretime",
+        "visittime",
+        "createtime",
+        "expirestime",
+        "expiredtime",
+        "regtime",
+        "endtime",
+        "publishtime",
+        "arrivaltime",
+        "starttime",
+        "invitetime",
+        "logintime",
+        "lastlogin",
+        "lastonline",
+        "appstarttimestamp"
+    ],
+    "event_date": [
+        "createdate",
+        "updatedate",
+        "expiringdate",
+        "expiration",
+        "expirationday",
+        "expire",
+        "expirationdate"
+    ],
+    "user_address": [
+        "address",
+        "addressid",
+        "residential",
+        "homeaddress",
+        "streetaddress",
+        "streetaddr",
+        "resident",
+        "residence",
+        "residency",
+        "street",
+        "homeaddr",
+        "addrdetail",
+        "addressstreet",
+        "doorcode",
+        "house",
+        "home",
+        "hometown",
+        "town",
+        "continent",
+        "nationality",
+        "nation",
+        "country",
+        "countryid",
+        "countrycode",
+        "province",
+        "provincecode",
+        "cityid",
+        "citycode",
+        "city",
+        "cityname",
+        "area",
+        "areaid",
+        "areacode",
+        "userarea",               
+        "district",
+        "region",
+        "place",
+        "placename",
+        "geoname",
+        "geocode",
+        "locationid"
+    ],
+    "zipcode": [
+        "zip",
+        "statezip",
+        "zipcode",
+        "garagingzip",
+        "zipcd",
+        "postcode",
+        "postalcode"
+    ],
+    "distance": [
+        "distance",
+        "movementdistance"
+    ],
+    "transaction_info": [
+        "pay",
+        "billpay",
+        "payee",
+        "payeename",
+        "payment",
+        "transaction",
+        "mobilepay",
+        "expense"
+    ],
+    "online_status": [
+        "online",
+        "onlinestate",
+        "userstate",
+        "contactstatus"
+    ],
+    "user_token": [
+        "token",
+        "apptoken",
+        "oauthtoken",
+        "logintoken",
+        "facebooktoken",
+        "fbtoken",
+        "devicetoken"
+    ],
+    "auth_key": [
+        "appsecret",
+        "appkey",
+        "secret",
+        "authkey",
+        "secretkey",
+        "clientsecret"
+    ],
+    "fingerprint": [
+        "fingerprint",
+        "devicefingerprint"
+    ],
+    "timezone": [
+        "timezone",
+        "timezoneid"
+    ],
+    "family_info": [
+        "family",
+        "familyid"
+    ],
+    "app_business_data": [
+        "vip",
+        "userlevel",
+        "level",
+        "viplevel",
+        "vipgrade",
+        "reputation",
+        "membershiptype"
+    ],
+    "tax": [
+        "tax",
+        "shippingtax"
+    ],
+    "speed": [
+        "speed"
+    ],
+    "vehicle": [
+        "vehicle",
+        "carrier"
+    ],
+    "verification_code": [
+        "securitycode",
+        "invitecode",
+        "invitationcode",
+        "validationcode",
+        "verifycode"
+    ],
+    "citizen_info": [
+        "citizenship",
+        "citizen"
+    ],
+    "user_experience": [
+        "experience"
+    ],
+    "shopping_data": [
+        "orderno",
+        "shopcart"
+    ],
+    "relationship": [
+        "friendslist",
+        "addressbook",
+        "follower",
+        "partnership",
+        "friendship",
+        "followee",
+        "contact",
+        "relationshipstatus",
+        "bifollowecount",
+        "friend"
+    ],
+    "philosophy_info": [
+        "philosophical",
+        "philosophy"
+    ],
+    "political_preference": [
+        "politics",
+        "polotical",
+        "political"
+    ],
+    "faceprint": [
+        "faceprint"
+    ],
+    "voiceprint": [
+        "voiceprint"
+    ],
+    "sns": [
+        "snsuser",
+        "snsuid",
+        "sns"
+    ],
+    "app_info": [
+        "appversion",
+        "appchannel",
+        "applist",
+        "installedapps",
+        "appid"
+    ],
+    "activity_record": [
+        "chatrecord",
+        "oftenvisitpositions",
+        "visitedplace",
+        "interactions",
+        "searchqueries",
+        "emailhistory",
+        "criminalrecord",
+        "locationsearch",
+        "loginrecord",
+        "browsehistory",
+        "callrecord"
+    ],
+    "shipping": [
+        "shipping"
+    ],
+    "transcript": [
+        "transcript"
+    ],
+    "serial_number": [
+        "serialno",
+        "serial"
+    ],
+    "advertisement_id": [
+        "adid",
+        "advertisingid",
+        "advertisingidentity"
+    ]
+}
