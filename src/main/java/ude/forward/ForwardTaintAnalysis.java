@@ -262,10 +262,10 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
         InvokeExpr invokeExpr = stmt.getInvokeExpr();
         List<Value> args = stmt.getInvokeExpr().getArgs();
         boolean isInvokeObjectTainted = false;
-        RefType invokeObjectType = null;
+        RefLikeType invokeObjectType = null;
         if ((invokeExpr instanceof InstanceInvokeExpr)) {
             Local invokeObject = (Local) ((InstanceInvokeExpr) invokeExpr).getBase();
-            invokeObjectType = (RefType) invokeObject.getType();
+            invokeObjectType = (RefLikeType) invokeObject.getType();
             if (in.contains(invokeObject)) {
                 isInvokeObjectTainted = true;
             }
@@ -280,10 +280,10 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
                         List<Local> paramLocals = body.getParameterLocals();
                         int index = paramLocals.indexOf(invokeObject);
                         Value arg = this.invokeContext.getParamIndex2Arg().get(index);
-                        if (arg!=null) {
+                        if (arg != null) {
                             Type argType = arg.getType();
                             if (argType!=NullType.v()) {
-                                invokeObjectType = (RefType) argType;
+                                invokeObjectType = (RefLikeType) argType;
                             } else {
                                 // 如果实例方法的调用对象值为null，就不用分析这句话了
                                 // NullType不是RefType
@@ -333,29 +333,14 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
             // todo 如果存在多条边，需要确认具体是哪个方法
             if (invokeExpr instanceof InstanceInvokeExpr) {
                 String tgtSubSignature = tgtMethod.getSubSignature();
-//                Local invokeObject = (Local) ((InstanceInvokeExpr) invokeExpr).getBase();
-//                RefType invokeObjectType = (RefType) invokeObject.getType();
-//
-//                if (this.invokeContext != null) {
-//                    List<Local> paramLocals = sootMethod.retrieveActiveBody().getParameterLocals();
-//                    if (paramLocals.contains(invokeObject)) {
-//                        int i = paramLocals.indexOf(invokeObject);
-//                        Value arg = this.invokeContext.getParamIndex2Arg().get(i);
-//                        invokeObjectType = (RefType) arg.getType();
-//                    }
-//                    else if (!sootMethod.isStatic() && invokeObject==sootMethod.retrieveActiveBody().getThisLocal()) {
-//                        RefType contextInvokeObjectType = this.invokeContext.getThisObjectType();
-//                        if (contextInvokeObjectType != null) {
-//                            invokeObjectType = contextInvokeObjectType;
-//                        }
-//                    }
-//                }
-                RefType invokeObjectType = context.getThisObjectType();
-                SootClass invokeObjectClass = invokeObjectType.getSootClass();
-                if (invokeObjectClass.isApplicationClass() && !AppAnalyzer.is3rdPartyLibrary(invokeObjectClass)) {
-                    // 如果invokeObjectClass是
-                    if (AppAnalyzer.isSubclassOrImplementer(invokeObjectClass, tgtMethod.getDeclaringClass()) && invokeObjectClass.isConcrete()) {
-                        tgtMethod = AppAnalyzer.locateMethod(invokeObjectClass, tgtSubSignature);
+                RefLikeType invokeObjectType = context.getThisObjectType();
+                if (invokeObjectType instanceof RefType) {
+                    SootClass invokeObjectClass = ((RefType) invokeObjectType).getSootClass();
+                    if (invokeObjectClass.isApplicationClass() && !AppAnalyzer.is3rdPartyLibrary(invokeObjectClass)) {
+                        // 如果invokeObjectClass是
+                        if (AppAnalyzer.isSubclassOrImplementer(invokeObjectClass, tgtMethod.getDeclaringClass()) && invokeObjectClass.isConcrete()) {
+                            tgtMethod = AppAnalyzer.locateMethod(invokeObjectClass, tgtSubSignature);
+                        }
                     }
                 }
 

@@ -2,21 +2,17 @@
 
 
 
+import json
 import os
-import sys
 import PrivacyDiscoverer
 
 ude_logs_path = "ude_logs"
 ude_logs_formatted_path = "ude_logs_formatted"
 if not os.path.exists(ude_logs_formatted_path):
     os.mkdir(ude_logs_formatted_path)
-# ude_logs_not_empty_path = "ude_logs_not_empty"
-# if not os.path.exists(ude_logs_not_empty_path):
-#     os.mkdir(ude_logs_not_empty_path)
 ude_logs_with_privacy_path = "ude_logs_with_privacy"
 if not os.path.exists(ude_logs_with_privacy_path):
     os.mkdir(ude_logs_with_privacy_path)
-
 
 
 def read_lines(file_path):
@@ -50,10 +46,11 @@ def get_formatted_lines(lines: list):
             status = 1
         elif line.startswith("[Forward]"):
             status = 2
-        elif line == "" or line.startswith("No Forward Analysis") or line.startswith("[No Forward Analysis]"):
+        elif line == "":
             if status != 0:
                 status = 0
                 if backward_lines and forward_lines:
+                # if forward_lines:
                     res.append("[Backward]" + "\n")
                     for format_line in backward_lines:
                         res.append(format_line + "\n")
@@ -72,55 +69,31 @@ def get_formatted_lines(lines: list):
     return res
 
 
-
-
-
-
 def format_requests_and_responses():
     root_log_dir_path = ude_logs_path
     categories = os.listdir(root_log_dir_path)
     for cate_idx, category in enumerate(categories):
+        # parsed_appids[category] = []
         category_path = os.path.join(root_log_dir_path, category)
         if os.path.isfile(category_path):
             continue
+        formatted_cate_path = os.path.join(ude_logs_formatted_path, category)
+        if not os.path.exists(formatted_cate_path):
+            os.mkdir(formatted_cate_path)
         log_names = os.listdir(category_path)
         for log_idx, log_name in enumerate(log_names):
             if log_name.endswith("_field_info.txt"):
                 continue
+            formatted_log_path = os.path.join(formatted_cate_path, log_name)
+            if os.path.exists(formatted_log_path):
+                continue
+            print("Format", category, log_name)
             log_path = os.path.join(category_path, log_name)
             lines = read_lines(log_path)
             formatted_lines = get_formatted_lines(lines)
+
             if formatted_lines:
-                formatted_cate_path = os.path.join(ude_logs_formatted_path, category)
-                if not os.path.exists(formatted_cate_path):
-                    os.mkdir(formatted_cate_path)
-                formatted_log_path = os.path.join(formatted_cate_path, log_name)
                 write_lines(formatted_log_path, formatted_lines)
-
-
-# # 在上一个函数排除掉没有对应的请求和结果的条件下，排除内容为空文件
-# def filter_empty_files():
-#     root_log_dir_path = ude_logs_formatted_path
-#     categories = os.listdir(root_log_dir_path)
-#     for cate_idx, category in enumerate(categories):
-#         category_path = os.path.join(root_log_dir_path, category)
-#         if os.path.isfile(category_path):
-#             continue
-#         log_names = os.listdir(category_path)
-#         for log_idx, log_name in enumerate(log_names):
-#             log_path = os.path.join(category_path, log_name)
-#             lines = read_lines(log_path)
-#             has_content = False
-#             for line in lines:
-#                 if line.strip():
-#                     has_content = True
-#                     break
-#             if has_content:
-#                 not_empty_cate_path = os.path.join(ude_logs_not_empty_path, category)
-#                 if not os.path.exists(not_empty_cate_path):
-#                     os.mkdir(not_empty_cate_path)
-#                 not_empty_log_path = os.path.join(not_empty_cate_path, log_name)
-#                 write_lines(not_empty_log_path, lines)
 
 
 def filter_requests_with_privacy():
@@ -130,19 +103,23 @@ def filter_requests_with_privacy():
         category_path = os.path.join(root_log_dir_path, category)
         if os.path.isfile(category_path):
             continue
+        ude_logs_with_privacy_category_path = os.path.join(ude_logs_with_privacy_path, category)
+        if not os.path.exists(ude_logs_with_privacy_category_path):
+            os.mkdir(ude_logs_with_privacy_category_path)
         log_names = os.listdir(category_path)
         for log_index, log_name in enumerate(log_names):
-            print(log_name)
             if not log_name.endswith(".txt"):
                 continue
+            res_path = os.path.join(ude_logs_with_privacy_category_path, log_name)
+            if os.path.exists(res_path):
+                continue
+            print("Filter privacy", category, log_name)
             res_lines = []
-            contains_privacy = False
             appid = log_name[:-len(".txt")]
             log_path = os.path.join(category_path, log_name)
             lines = read_lines(log_path)
             all_field_info = load_all_field_info(category, appid)
             all_requests_in_lines = get_requests(lines)
-
             res_recorder = {}
             for single_request_in_lines in all_requests_in_lines:
                 single_request = parse_single_request(single_request_in_lines)
@@ -150,7 +127,7 @@ def filter_requests_with_privacy():
                 resp_info_items = single_request["[Forward]"]
                 string_consts_fields, classes = get_key_strings_and_classes(resp_info_items)
 
-                batch_info_in_current_request["KeyStringProfile"] = string_consts_fields # 用所有相关的KeyString组成一个类
+                batch_info_in_current_request["JsonObject"] = string_consts_fields # 用所有相关的KeyString组成一个类
                 related_classes = set()
                 for each_class in classes:
                     if each_class not in res_recorder and each_class not in related_classes:
@@ -166,21 +143,20 @@ def filter_requests_with_privacy():
                 # 隐私分析
                 res = PrivacyDiscoverer.judge_privacy.batch_judge(batch_info_in_current_request)
                 
+                contains_privacy = False
                 for class_name, field_items in res.items():
                     res_recorder[class_name] = field_items
                     if field_items:
                         for item in field_items:
                             if item[0]:
+                                print(item)
                                 # append_line_to_file("ude_log_res.txt", item)
                                 contains_privacy = True
                 if contains_privacy:
                     res_lines.extend(single_request_in_lines)
 
             if res_lines:
-                ude_logs_with_privacy_category_path = os.path.join(ude_logs_with_privacy_path, category)
-                if not os.path.exists(ude_logs_with_privacy_category_path):
-                    os.mkdir(ude_logs_with_privacy_category_path)
-                write_lines(os.path.join(ude_logs_with_privacy_category_path, log_name), res_lines)
+                write_lines(res_path, res_lines)
 
 
 
@@ -245,10 +221,11 @@ def get_requests(lines: list):
             status = 1
         elif line.startswith("[Forward]"):
             status = 2
-        elif line == "" or line.startswith("No Forward Analysis") or line.startswith("[No Forward Analysis]"):
+        elif line == "":
             if status != 0:
                 status = 0
                 if backward_lines and forward_lines:
+                # if forward_lines:
                     current_request = []
                     current_request.append("[Backward]" + "\n")
                     for format_line in backward_lines:
@@ -278,10 +255,11 @@ def parse_single_request(lines):
             status = 1
         elif line.startswith("[Forward]"):
             status = 2
-        elif line == "" or line.startswith("No Forward Analysis") or line.startswith("[No Forward Analysis]"):
+        elif line == "":
             if status != 0:
                 status = 0
                 if backward_lines and forward_lines:
+                # if forward_lines:
                     current_request = {
                         "[Backward]": [],
                         "[Forward]": []
@@ -298,23 +276,57 @@ def parse_single_request(lines):
                 forward_lines.append(line)
 
 
+def count():
+    root_log_dir_path = ude_logs_with_privacy_path
+    category_names = os.listdir(root_log_dir_path)
+    for cate_index, category in enumerate(category_names):
+        category_path = os.path.join(root_log_dir_path, category)
+        log_names = os.listdir(category_path)
+        print(category, len(log_names))
 
 
-if __name__=="__main__":
-    pass
-
-    # batch_info_in_current_request = {
-    #     "com.likemeet.model.Users": [
-    #         ('long', 'user_id'),
-    #         ('int', 'user_age'),
-    #         ('int', 'user_genre'),
-    #         ('java.lang.String', 'user_name')
-    #     ]
-    # }
-    # res = PrivacyDiscoverer.judge_privacy.batch_judge(batch_info_in_current_request)
-    # print(res)
+def run():
+    # count()
     format_requests_and_responses()
     filter_requests_with_privacy()
 
 
+if __name__=="__main__":
+    pass
+    run()
 
+
+
+
+
+"""
+耗时: 70452秒
+耗时: 50633秒
+耗时: 60002秒
+耗时: 69203秒
+耗时: 66223秒
+耗时: 65533秒
+耗时: 55603秒
+耗时: 60001秒
+耗时: 70012秒
+耗时: 50503秒
+耗时: 53362秒
+耗时: 64867秒
+耗时: 60983秒
+耗时: 60928秒
+耗时: 69824秒
+耗时: 69393秒
+耗时: 60652秒
+耗时: 70432秒
+耗时: 55072秒
+耗时: 67452秒
+耗时: 59536秒
+耗时: 54696秒
+耗时: 74718秒
+耗时: 73024秒
+耗时: 74626秒
+耗时: 64166秒
+耗时: 76699秒
+耗时: 85037秒
+耗时: 53343秒
+"""

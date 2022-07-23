@@ -30,6 +30,9 @@ public class AppAnalyzer {
 
     public static List<String> backwardFilterPrefixList;
 
+    public static long startTime;
+    public static long endTime;
+
     public static String appId;
     public static String logFilePath;
     public static File logFile;
@@ -69,9 +72,6 @@ public class AppAnalyzer {
 
     public static void main(String[] args) {
 
-
-        AppAnalyzer appAnalyzer = new AppAnalyzer();
-
 //        appAnalyzer.analyze(2, "/Users/flower/AndroidStudioProjects/TestApp/app/build/outputs/apk/debug/app-debug.apk"); // test thread
 //        System.exit(0);
 
@@ -91,7 +91,7 @@ public class AppAnalyzer {
 
 //        appAnalyzer.analyze(12, "/Users/flower/Downloads/com.rayandating.singleDoctors.apk"); // fast android networking
 
-//        appAnalyzer.analyze(13, "/Users/flower/Downloads/com.cherrygroup.dating.apk"); // volley 封装
+//        appAnalyzer.analyze(13, "/Users/flower/Downloads/tmp_apks/com.cherrygroup.dating.apk"); // volley 封装
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.videochat.alo.apk"); // volley 封装
 
 
@@ -120,29 +120,69 @@ public class AppAnalyzer {
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.likemeet.apk");
 //
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.cupichat.android.apk");
+//        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.probits.argo.apk"); // android async http client
 //        System.exit(0);
 
 
 
 
         //----------------------------
+        runOnDataset();
+    }
+
+    public static void runOnDataset() {
+        AppAnalyzer appAnalyzer = new AppAnalyzer();
+
         File logDir = new File("ude_logs");
         if (!logDir.exists()) logDir.mkdir();
 
-//        List<String> apkPaths = getApps();
+        startTime = System.currentTimeMillis();
+
+        List<String> categoryDirPaths = getFilePathsInDirPath("/home/tendoyo/xuexiziliao/hqd/download_apks", false, true);
+        for (String categoryDirPath: categoryDirPaths) {
+            String category = new File(categoryDirPath).getName();
+            File categoryFlagFile = new File("cateFlags/" + category);
+            if (categoryFlagFile.exists()) continue;
+            try {
+                categoryFlagFile.createNewFile();
+            } catch (Exception e) {
+                System.err.println("Fail to create flag file.");
+                System.exit(0);
+            }
+
+            long cateStartTime = System.currentTimeMillis();
+
+            List<String> apkPaths = getFilePathsInDirPath(categoryDirPath, true, false);
+            System.out.println(categoryDirPath);
+            System.out.println(apkPaths.size());
+            for (int i = 0; i < apkPaths.size(); i ++) {
+                if (apkPaths.get(i).endsWith(".apk")) {
+                    appAnalyzer.limitTaskTime(i, apkPaths.get(i), 10);
+                }
+            }
+
+            long cateEndTime = System.currentTimeMillis();
+            FileTool.addLine("hn/time_record.txt", category + ": " + (cateEndTime-cateStartTime)/1000 + "s");
+        }
+
+        endTime = System.currentTimeMillis();
+        System.out.println("耗时: " + ((endTime-startTime)/1000) + "秒");
+    }
+
+    public static void runOnGroundTruth() {
+        AppAnalyzer appAnalyzer = new AppAnalyzer();
+
+        File logDir = new File("ude_logs");
+        if (!logDir.exists()) logDir.mkdir();
+
         List<String> apkPaths = getTestApps();
-
-//        List<String> apkPaths = new ArrayList<>();
-//        apkPaths.add("/Users/flower/Downloads/com.cupichat.android.apk");
-//        apkPaths.add("/Users/flower/Downloads/com.likemeet.apk");
-
-
 
         System.out.println("Total: " + apkPaths.size());
 
         int batch = newBatch();
         System.out.println("Batch " + batch);
 
+        startTime = System.currentTimeMillis();
         int countEachBatch = 15; // 每个batch分析的apk数量
         for (int i = batch * countEachBatch; i < (batch + 1) * countEachBatch; i++) {
             if (i >= apkPaths.size()) break;
@@ -150,6 +190,8 @@ public class AppAnalyzer {
                 appAnalyzer.limitTaskTime(i, apkPaths.get(i), 10);
             }
         }
+        endTime = System.currentTimeMillis();
+        System.out.println("耗时: " + ((endTime-startTime)/1000) + "秒");
     }
 
     public static List<String> getTestApps() {
@@ -220,7 +262,7 @@ public class AppAnalyzer {
         return apkPaths;
     }
 
-    public static List<String> getApps() {
+    public static List<String> getAllApps() {
         // 获取要分析的apk路径
         List<String> apkPaths = new ArrayList<>();
         File apkRootDir = new File("/home/tendoyo/xuexiziliao/hqd/download_apks");
@@ -239,6 +281,32 @@ public class AppAnalyzer {
         return apkPaths;
     }
 
+    public static List<String> getFilePathsInDirPath(String dirPath, boolean onlyFile, boolean onlyDir) {
+        List<String> res = new ArrayList<>();
+        File dirFile = new File(dirPath);
+        File[] files = dirFile.listFiles();
+        for (File file : files) {
+            if (file.isFile() && onlyDir) continue;
+            if (file.isDirectory() && onlyFile) continue;
+
+            String filePath = file.getAbsolutePath();
+            res.add(filePath);
+
+            if (onlyDir) {
+                // 稍微做一下排序，优先分析关注的类
+                if (file.getName().toLowerCase().contains("dating")
+                        || file.getName().toLowerCase().contains("social")
+                        || file.getName().toLowerCase().contains("communication")
+                        || file.getName().toLowerCase().contains("shopping")) {
+                    res.remove(filePath);
+                    res.add(0, filePath);
+                }
+            }
+
+        }
+        return res;
+    }
+
     public void limitTaskTime(int i, String apkPath, int timeOut) {
         // 获取线程池
         ExecutorService es = Executors.newFixedThreadPool(1);
@@ -250,7 +318,7 @@ public class AppAnalyzer {
         });
 
         try {
-            // futrue.get()测试被执行的程序是否能在timeOut时限内返回字符串
+            // future.get()测试被执行的程序是否能在timeOut时限内返回字符串
             future.get(timeOut, TimeUnit.MINUTES);
             return;
         } catch (Exception ex) {
@@ -296,12 +364,6 @@ public class AppAnalyzer {
             for (SootMethod sootMethod : declaredMethods) {
                 if (!sootMethod.isConcrete()) continue;
 
-//                if (sootMethod != Scene.v().getMethod("<com.mooq.dating.chat.activity.UsersProfileActivity: void getProfileService()>")) continue;
-//                if (sootMethod != Scene.v().getMethod("<com.malangstudio.base.OkHttpUtil: void postForm(java.lang.String,com.google.gson.JsonObject,com.malangstudio.base.callback.MalangCallback)>")) continue;
-//                if (sootMethod != Scene.v().getMethod("<g2.p: java.lang.Object call()>")) continue;
-
-//                if (sootMethod != Scene.v().getMethod("<com.mooq.dating.chat.fragments.UsersFragment: void getUsersServices()>")) continue;
-
                 UnitPatchingChain units = sootMethod.retrieveActiveBody().getUnits();
                 for (Unit unit : units) {
                     Stmt stmt = (Stmt) unit;
@@ -318,25 +380,34 @@ public class AppAnalyzer {
         boolean binded = false;
         if (!binded) binded = fastAndroidNetworkingBinder.checkAndBind(sootMethod, stmt);
         if (!binded)
-            binded = okHttp3AsyncBinder.checkAndBind(sootMethod, stmt);                    //if (binded) {System.out.println("!!!okHttp3AyncBinder: " + sootMethod); return;}
+            binded = okHttp3AsyncBinder.checkAndBind(sootMethod, stmt);
         if (!binded)
-            binded = okHttp3SyncBinder.checkAndBind(sootMethod, stmt);                      //if (binded) {System.out.println("!!!okHttp3SyncBinder: " + sootMethod); return;}
+            binded = okHttp3SyncBinder.checkAndBind(sootMethod, stmt);
         if (!binded)
-            binded = volleyBinder.checkAndBind(sootMethod, stmt);                           //if (binded) {System.out.println("!!!volleyBinder: " + sootMethod); return;}
+            binded = volleyBinder.checkAndBind(sootMethod, stmt);
         if (!binded)
-            binded = androidAsyncHttpClientBinder.checkAndBind(sootMethod, stmt);           //if (binded) {System.out.println("!!!androidAsyncHttpClientBinder: " + sootMethod); return;}
+            binded = androidAsyncHttpClientBinder.checkAndBind(sootMethod, stmt);
         if (!binded)
-            binded = httpUrlConnectionBinder.checkAndBind(sootMethod, stmt);                //if (binded) {System.out.println("!!!httpUrlConnectionBinder: " + sootMethod); return;}
-        if (!binded)
-            binded = httpClientV5SyncBinder.checkAndBind(sootMethod, stmt);                 //if (binded) {System.out.println("!!!httpClientV5SyncBinder: " + sootMethod); return;}
-        if (!binded)
-            binded = httpClientV5AsyncBinder.checkAndBind(sootMethod, stmt);                //if (binded) {System.out.println("!!!httpClientV5AsyncBinder: " + sootMethod); return;}
-        if (!binded)
-            binded = httpClientV4SyncBinder.checkAndBind(sootMethod, stmt);                 //if (binded) {System.out.println("!!!httpClientV4SyncBinder: " + sootMethod); return;}
-        if (!binded)
-            binded = httpClientV4AsyncBinder.checkAndBind(sootMethod, stmt);                //if (binded) {System.out.println("!!!httpClientV4AsyncBinder: " + sootMethod); return;}
+            binded = httpUrlConnectionBinder.checkAndBind(sootMethod, stmt);
         if (!binded)
             binded = retrofit2SyncBinder.checkAndBind(sootMethod, stmt);
+
+        if (!binded)
+            binded = httpClientV5SyncBinder.checkAndBind(sootMethod, stmt);
+        if (binded)
+            FileTool.addLine("hn/HttpClientV5Sync.txt", AppAnalyzer.logFilePath);
+        if (!binded)
+            binded = httpClientV5AsyncBinder.checkAndBind(sootMethod, stmt);
+        if (binded)
+            FileTool.addLine("hn/HttpClientV5Async.txt", AppAnalyzer.logFilePath);
+        if (!binded)
+            binded = httpClientV4SyncBinder.checkAndBind(sootMethod, stmt);
+        if (binded)
+            FileTool.addLine("hn/HttpClientV4Sync.txt", AppAnalyzer.logFilePath);
+        if (!binded)
+            binded = httpClientV4AsyncBinder.checkAndBind(sootMethod, stmt);
+        if (binded)
+            FileTool.addLine("hn/HttpClientV4Async.txt", AppAnalyzer.logFilePath);
     }
 
     public boolean initFilePaths(String apkPath) {

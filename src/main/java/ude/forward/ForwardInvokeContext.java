@@ -1,5 +1,6 @@
 package ude.forward;
 
+import soot.RefLikeType;
 import soot.RefType;
 import soot.Value;
 import soot.toolkits.scalar.FlowSet;
@@ -9,14 +10,14 @@ import java.util.HashMap;
 public class ForwardInvokeContext {
 
     private boolean isInvokeObjectTainted;
-    private RefType invokeObjectType;
+    private RefLikeType invokeObjectType;
     private FlowSet<Integer> taintedParamIndexes;
     private HashMap<Integer, Value> paramIndex2Arg;
 
     private boolean isCallback;
 
     public ForwardInvokeContext(boolean isInvokeObjectTainted,
-                                RefType invokeObjectType,
+                                RefLikeType invokeObjectType,
                                 FlowSet<Integer> taintedParamIndexes,
                                 HashMap<Integer, Value> paramIndex2Arg) {
 
@@ -24,7 +25,7 @@ public class ForwardInvokeContext {
     }
 
     public ForwardInvokeContext(boolean isInvokeObjectTainted,
-                                RefType invokeObjectType,
+                                RefLikeType invokeObjectType,
                                 FlowSet<Integer> taintedParamIndexes,
                                 HashMap<Integer, Value> paramIndex2Arg,
                                 boolean isCallback) {
@@ -39,7 +40,7 @@ public class ForwardInvokeContext {
         return isInvokeObjectTainted;
     }
 
-    public RefType getThisObjectType() {
+    public RefLikeType getThisObjectType() {
         return invokeObjectType;
     }
 

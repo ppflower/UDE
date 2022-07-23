@@ -343,8 +343,8 @@ def profile_entry_judge(class_name, field_list):
     short_class_name = class_name.split('.')[-1]
     if is_anonymous_inner_class(short_class_name):
         return 0, None
-    if is_possible_my_privacy(short_class_name):
-        return 0, None
+    # if is_possible_my_privacy(short_class_name):
+    #     return 0, None
     if is_obfuscated_short_class(short_class_name): # If the class name is obfuscated, we can not judge if it is other users' privacy
         return 0, None
 
@@ -365,8 +365,8 @@ def normal_entry_judge(class_name, field_list):
     short_class_name = class_name.split('.')[-1]
     if is_anonymous_inner_class(short_class_name):
         return 0, None
-    if is_possible_my_privacy(short_class_name):
-        return 0, None
+    # if is_possible_my_privacy(short_class_name):
+    #     return 0, None
 
     # analyze fields
     field_res_list = analyze_fields(class_name, field_list)

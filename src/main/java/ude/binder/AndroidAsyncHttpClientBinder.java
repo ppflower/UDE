@@ -51,6 +51,8 @@ public class AndroidAsyncHttpClientBinder extends AsyncBinder {
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[1])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(0, 1), 2);
+
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(0, 1), Collections.singletonList(2));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[2])) {
@@ -58,7 +60,7 @@ public class AndroidAsyncHttpClientBinder extends AsyncBinder {
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[3])) {
-            System.out.println(3);
+//            System.out.println(3);
 //            System.out.println("正在分析" + callee.getSignature());
 //            System.out.println();
             findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 2), Collections.singletonList(4));
@@ -75,55 +77,68 @@ public class AndroidAsyncHttpClientBinder extends AsyncBinder {
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[4])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 3), 5);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 3), Collections.singletonList(5));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[5])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 3), 5);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 3), Collections.singletonList(5));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[6])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 2), 4);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 2), Collections.singletonList(4));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[7])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 3), 5);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 3), Collections.singletonList(5));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[8])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 3), 5);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 3), Collections.singletonList(5));
             return true;
         }
 
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[9])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 2), 3);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 2), Collections.singletonList(3));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[10])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, null), 2);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Collections.singletonList(1), Collections.singletonList(2));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[11])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(0, 1), 2);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(0, 1), Collections.singletonList(2));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[12])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(0, null), 1);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Collections.singletonList(0), Collections.singletonList(1));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[13])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 2), 4);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 2), Collections.singletonList(4));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[14])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 3), 4);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 3), Collections.singletonList(4));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[15])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 2), 4);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 2), Collections.singletonList(4));
             return true;
         }
         else if (callee.getSignature().equals(AndroidAsyncHttpClientBinder.METHOD_SIGNATURES[16])) {
 //            findRequestAndResponseParams(invokeContextMethod, stmt, Arrays.asList(1, 3), 4);
+            findAsyncWrappersAndAnalyze(invokeContextMethod, apiInvokeStmt, false, Arrays.asList(1, 3), Collections.singletonList(4));
             return true;
         }
 
@@ -149,6 +164,11 @@ public class AndroidAsyncHttpClientBinder extends AsyncBinder {
             sm = currentClass.getMethodUnsafe("void onSuccess(int,org.apache.http.Header[],java.lang.String)");
             if (sm != null) return sm;
             sm = currentClass.getMethodUnsafe("void onSuccess(int,cz.msebera.android.httpclient.Header[],java.lang.String)");
+            if (sm != null) return sm;
+
+            sm = currentClass.getMethodUnsafe("void onSuccess(int,org.apache.http.Header[],byte[])");
+            if (sm != null) return sm;
+            sm = currentClass.getMethodUnsafe("void onSuccess(int,cz.msebera.android.httpclient.Header[],byte[])");
             if (sm != null) return sm;
 
             if (currentClass.hasSuperclass()) {

@@ -6,7 +6,7 @@ import soot.jimple.Stmt;
 
 import java.util.List;
 
-public class HttpClientV4SyncBinder extends Binder {
+public class HttpClientV4SyncBinder extends SyncBinder {
     public static String[] METHOD_SIGNATURES = {
             "<cz.msebera.android.httpclient.impl.client.CloseableHttpClient: cz.msebera.android.httpclient.HttpResponse execute(cz.msebera.android.httpclient.HttpHost,cz.msebera.android.httpclient.HttpRequest)>",
             "<cz.msebera.android.httpclient.impl.client.CloseableHttpClient: cz.msebera.android.httpclient.HttpResponse execute(cz.msebera.android.httpclient.HttpHost,cz.msebera.android.httpclient.HttpRequest,cz.msebera.android.httpclient.protocol.HttpContext)>",
@@ -139,25 +139,5 @@ public class HttpClientV4SyncBinder extends Binder {
             return true;
         }
         return false;
-    }
-
-    public SootMethod locateCallback(SootClass implementer) {
-        // void completed(T result);
-        List<SootMethod> methods = implementer.getMethods();
-        SootMethod callback = null;
-        int callbackCount = 0;
-        for (SootMethod method: methods) {
-            if (!method.getName().equals("handleResponse")) continue;
-            if (method.getParameterCount() != 1) continue;
-            SootClass object = Scene.v().getSootClass("java.lang.Object");
-            if (method.getReturnType() == object.getType()) continue;
-            callback = method;
-            callbackCount ++;
-        }
-        if (callbackCount != 1) {
-            System.err.println("!!!!!!!!!!!!!!! Fail to locate callback in " + implementer);
-            System.err.println(methods);
-        }
-        return callback;
     }
 }

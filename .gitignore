@@ -33,3 +33,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
+### 本项目生成的log
+META-INF
+ude_logs*
+out
