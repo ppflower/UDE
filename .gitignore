@@ -39,3 +39,6 @@ build/
 META-INF
 ude_logs*
 out
+
+PrivacyDiscoverer/__pycache__
+*.pyc
