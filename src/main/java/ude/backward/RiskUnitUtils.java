@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ude.AppAnalyzer.backwardFilterPrefixList;
+import static ude.AppAnalyzer.headerList;
 
 public class RiskUnitUtils {
 
@@ -75,7 +76,8 @@ public class RiskUnitUtils {
             if (!tmp.contains("//")) {
                 tmp = tmp.trim();
                 tmp = tmp.replaceAll("[^0-9a-zA-Z-_]", "");
-                importantInfo.add("KeyString:" + tmp);
+                if (tmp.length() > 0 && !isHeaderString(tmp))
+                    importantInfo.add("KeyString:" + tmp);
             }
 
         }
@@ -98,6 +100,15 @@ public class RiskUnitUtils {
     public static boolean isBackwardFilterClass(String clzName) {
         for (String backwardFilterPrefix : backwardFilterPrefixList) {
             if (clzName.startsWith(backwardFilterPrefix)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isHeaderString(String str) {
+        for (String header : headerList) {
+            if (str.equalsIgnoreCase(header.trim())) {
                 return true;
             }
         }

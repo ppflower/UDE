@@ -1,5 +1,6 @@
 package ude;
 
+import org.checkerframework.checker.units.qual.A;
 import soot.*;
 import soot.jimple.Stmt;
 import soot.jimple.infoflow.InfoflowConfiguration;
@@ -30,6 +31,8 @@ public class AppAnalyzer {
 
     public static List<String> backwardFilterPrefixList;
 
+    public static List<String> headerList;
+
     public static long startTime;
     public static long endTime;
 
@@ -55,6 +58,7 @@ public class AppAnalyzer {
         androidJars = System.getenv("ANDROID_JARS");
         thirdPartyLibraryPrefixList = FileTool.readLinesFromFile("apis/libraries.txt");
         backwardFilterPrefixList = FileTool.readLinesFromFile("apis/backwardFilter.txt");
+        headerList = FileTool.readLinesFromFile("apis/headers.txt");
 //        isDebugging = true;
 
     }
@@ -71,7 +75,6 @@ public class AppAnalyzer {
     }
 
     public static void main(String[] args) {
-
 //        appAnalyzer.analyze(2, "/Users/flower/AndroidStudioProjects/TestApp/app/build/outputs/apk/debug/app-debug.apk"); // test thread
 //        System.exit(0);
 
@@ -95,7 +98,6 @@ public class AppAnalyzer {
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.videochat.alo.apk"); // volley 封装
 
 
-
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.weblinkstech.bebolive.apk");
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/ru.taboo.app.apk");
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.rayandating.divorcedSingles.apk");
@@ -111,7 +113,6 @@ public class AppAnalyzer {
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.weblinkstech.bebolive.apk");
 
 
-
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/br.com.promobit.app.apk");
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/ly.omegle.android.apk");
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.weblinkstech.bebolive.apk");
@@ -122,8 +123,6 @@ public class AppAnalyzer {
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.cupichat.android.apk");
 //        appAnalyzer.analyze(14, "/Users/flower/Downloads/com.probits.argo.apk"); // android async http client
 //        System.exit(0);
-
-
 
 
         //----------------------------
@@ -139,7 +138,7 @@ public class AppAnalyzer {
         startTime = System.currentTimeMillis();
 
         List<String> categoryDirPaths = getFilePathsInDirPath("/home/tendoyo/xuexiziliao/hqd/download_apks", false, true);
-        for (String categoryDirPath: categoryDirPaths) {
+        for (String categoryDirPath : categoryDirPaths) {
             String category = new File(categoryDirPath).getName();
             File categoryFlagFile = new File("cateFlags/" + category);
             if (categoryFlagFile.exists()) continue;
@@ -155,18 +154,18 @@ public class AppAnalyzer {
             List<String> apkPaths = getFilePathsInDirPath(categoryDirPath, true, false);
             System.out.println(categoryDirPath);
             System.out.println(apkPaths.size());
-            for (int i = 0; i < apkPaths.size(); i ++) {
+            for (int i = 0; i < apkPaths.size(); i++) {
                 if (apkPaths.get(i).endsWith(".apk")) {
                     appAnalyzer.limitTaskTime(i, apkPaths.get(i), 10);
                 }
             }
 
             long cateEndTime = System.currentTimeMillis();
-            FileTool.addLine("hn/time_record.txt", category + ": " + (cateEndTime-cateStartTime)/1000 + "s");
+            FileTool.addLine("hn/time_record.txt", category + ": " + (cateEndTime - cateStartTime) / 1000 + "s");
         }
 
         endTime = System.currentTimeMillis();
-        System.out.println("耗时: " + ((endTime-startTime)/1000) + "秒");
+        System.out.println("耗时: " + ((endTime - startTime) / 1000) + "秒");
     }
 
     public static void runOnGroundTruth() {
@@ -191,7 +190,7 @@ public class AppAnalyzer {
             }
         }
         endTime = System.currentTimeMillis();
-        System.out.println("耗时: " + ((endTime-startTime)/1000) + "秒");
+        System.out.println("耗时: " + ((endTime - startTime) / 1000) + "秒");
     }
 
     public static List<String> getTestApps() {
@@ -253,7 +252,7 @@ public class AppAnalyzer {
             File[] apkFiles = categoryDir.listFiles();
             for (File apkFile : apkFiles) {
                 String apkFileName = apkFile.getName();
-                for (String testAppId: testAppIds) {
+                for (String testAppId : testAppIds) {
                     if (testAppId.equals(apkFileName))
                         apkPaths.add(apkFile.getAbsolutePath());
                 }
@@ -467,6 +466,7 @@ public class AppAnalyzer {
     public void recordImportantInfo() {
         FileTool.addLines(logFilePath, importantInformation);
     }
+
     public void recordClassFieldInfo() {
         List<String> lines = new ArrayList<>();
         for (SootClass sc : classesToRecordFields) {
@@ -484,6 +484,7 @@ public class AppAnalyzer {
             return possibleSubclassOrImplementer.implementsInterface(sc.getName());
         }
     }
+
     public static boolean is3rdPartyLibrary(SootClass sootClass) {
         String clsName = sootClass.getName();
         if (clsName.startsWith(AppAnalyzer.appId)) {
@@ -496,6 +497,7 @@ public class AppAnalyzer {
         }
         return false;
     }
+
     public static void addLogLine(String line) {
         importantInformation.add(line);
     }
@@ -536,7 +538,6 @@ public class AppAnalyzer {
     }
 
 
-
     public void initFlowDroid(String apkPath) {
         InfoflowAndroidConfiguration configuration = new InfoflowAndroidConfiguration();
         configuration.setDataFlowTimeout(180);
@@ -550,18 +551,6 @@ public class AppAnalyzer {
         SetupApplication app = new SetupApplication(configuration);
         app.constructCallgraph();
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static boolean isAnonymousConstructor(SootMethod sootMethod) {
