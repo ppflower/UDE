@@ -84,7 +84,7 @@ public class VolleyBinder extends AsyncBinder {
             boolean isWrapper = !currentNode.getRequestParamsIndexes().isEmpty() && !currentNode.getResponseHandlerParamsIndexes().isEmpty();
             currentNode.setWrapper(isWrapper);
             if (isWrapper) {
-                analyzeEdgesInfoCurrentWrapper(currentNode); // 构建wrapper tree
+                analyzeEdgesIntoCurrentWrapper(currentNode); // 构建wrapper tree
                 analyzeAsyncWrapperTree(currentNode);
             }
 

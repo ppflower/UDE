@@ -58,7 +58,7 @@ public class Binder {
 
 //        AppAnalyzer.addLogLine("[No Forward Analysis]");
 
-        AppAnalyzer.addLogLine("[Forward]" + startNode.getMethod());
+        AppAnalyzer.addLogLine("[Forward]" + startNode.getMethod() + " " + this.getClass());
         Queue<MethodNodeAsync> queue = new LinkedList<>();
         queue.add(startNode);
         HashSet<Object> aggregatedRes = new HashSet<>();
@@ -80,7 +80,7 @@ public class Binder {
     }
 
     protected void startForwardAnalysisFromStmt(MethodNodeSync startNode) {
-        AppAnalyzer.addLogLine("[Forward]" + startNode.getMethod());
+        AppAnalyzer.addLogLine("[Forward]" + startNode.getMethod() + " " + this.getClass());
 
         // 把上层的node信息全部合并进来
         Queue<MethodNodeSync> queue = new LinkedList<>();

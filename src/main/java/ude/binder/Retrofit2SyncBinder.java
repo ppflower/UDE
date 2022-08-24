@@ -6,6 +6,7 @@ import soot.jimple.InvokeExpr;
 import soot.jimple.Stmt;
 import soot.tagkit.*;
 import ude.AppAnalyzer;
+import ude.forward.ForwardTaintAnalysis;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,7 +24,6 @@ public class Retrofit2SyncBinder extends Binder {
                 HashSet<Object> responseInfo = new HashSet<>();
                 getRequestAndResponseInfo(sm, requestInfo, responseInfo);
 
-//                if (!requestInfo.isEmpty() && !responseInfo.isEmpty()) {}
                 AppAnalyzer.addLogLine("[Backward]");
                 extendFieldInfo(requestInfo);
                 List<String> formattedInfo = formatImportantInfo(requestInfo);
@@ -31,7 +31,7 @@ public class Retrofit2SyncBinder extends Binder {
                     AppAnalyzer.addLogLine(s);
                 }
 
-                AppAnalyzer.addLogLine("[Forward]" + invokeContextMethod);
+                AppAnalyzer.addLogLine("[Forward]" + invokeContextMethod + " found by " + this.getClass().getSimpleName());
                 extendFieldInfo(responseInfo);
                 List<String> formattedRes = formatImportantInfo(responseInfo);
                 for (String s : formattedRes)
@@ -69,8 +69,9 @@ public class Retrofit2SyncBinder extends Binder {
 //        }
 
         for (Tag eachTag : sm.getTags()) {
-            if (eachTag.toString().contains("retrofit"))
+            if (eachTag.toString().contains("retrofit")) {
                 return true;
+            }
         }
         return false;
     }
@@ -119,7 +120,9 @@ public class Retrofit2SyncBinder extends Binder {
                         RefType respType = (RefType) ClassConstant.v(returnPartClsPath).toSootType();
                         SootClass respClass = respType.getSootClass();
                         responseInfo.add(respClass); // add important class info
-//                        System.out.println("    " + respClass);
+                        if (ForwardTaintAnalysis.isDebugging) {
+                            System.out.println("    " + respClass + " in Retrofit2SyncBinder");
+                        }
                     } catch (Exception e) {
                         System.err.println("    Fail to parse type " + returnPartClsPath + " in retrofit method " + sm);
                     }

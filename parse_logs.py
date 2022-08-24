@@ -73,7 +73,6 @@ def format_requests_and_responses():
     root_log_dir_path = ude_logs_path
     categories = os.listdir(root_log_dir_path)
     for cate_idx, category in enumerate(categories):
-        # parsed_appids[category] = []
         category_path = os.path.join(root_log_dir_path, category)
         if os.path.isfile(category_path):
             continue
@@ -83,6 +82,8 @@ def format_requests_and_responses():
         log_names = os.listdir(category_path)
         for log_idx, log_name in enumerate(log_names):
             if log_name.endswith("_field_info.txt"):
+                continue
+            if not log_name.endswith(".txt"):
                 continue
             formatted_log_path = os.path.join(formatted_cate_path, log_name)
             if os.path.exists(formatted_log_path):
@@ -150,7 +151,6 @@ def filter_requests_with_privacy():
                         for item in field_items:
                             if item[0]:
                                 print(item)
-                                # append_line_to_file("ude_log_res.txt", item)
                                 contains_privacy = True
                 if contains_privacy:
                     res_lines.extend(single_request_in_lines)

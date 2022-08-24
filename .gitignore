@@ -42,3 +42,5 @@ out
 
 PrivacyDiscoverer/__pycache__
 *.pyc
+src/main/java/test
+hn

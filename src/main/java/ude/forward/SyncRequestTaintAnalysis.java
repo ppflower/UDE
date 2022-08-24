@@ -17,6 +17,7 @@ public class SyncRequestTaintAnalysis extends ForwardTaintAnalysis {
         this.startStmtTaintedValues = startStmtTaintedValues;
 
         doAnalysis();
+
     }
 
 
@@ -24,6 +25,11 @@ public class SyncRequestTaintAnalysis extends ForwardTaintAnalysis {
     protected void flowThrough(FlowSet<Value> in, Unit unit, FlowSet<Value> out) {
         Stmt stmt = (Stmt) unit;
         if (stmt == this.startStmt){
+
+            if (isDebugging) {
+                System.out.println(String.format("%-35s", "[" + sootMethod.getDeclaringClass().getShortName() + " " + sootMethod.getName() + "] ") + String.format("%-30s", in.toString()) + stmt);
+            }
+
             // todo
             in.copy(out);
             out.union(startStmtTaintedValues);

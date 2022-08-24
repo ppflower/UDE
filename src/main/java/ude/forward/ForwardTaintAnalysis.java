@@ -108,7 +108,6 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
 
         if (isDebugging)
             System.out.println();
-
     }
 
     protected ForwardTaintAnalysis(SootMethod sootMethod) {
@@ -458,9 +457,21 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
             }
         }
 
+        // 下面的代码主要是处理一些对参数进行污染的标准库函数
         FlowSet<Integer> taintedParams = new ArraySparseSet<>();
-        if (tgtMethod.getSignature().equals("<java.io.BufferedInputStream: int read(byte[])>")) {
-            taintedParams.add(0);
+        if (context.isThisObjectTainted()) {
+            // 处理一系java.io.*InputStream对参数的污染
+            String tgtSignature = tgtMethod.getSignature();
+            if (tgtSignature.startsWith("<java.io.") && tgtSignature.contains("InputStream: int read(byte[]")) {
+                taintedParams.add(0);
+            }
+        } else if (tgtMethod.getDeclaringClass() == Scene.v().getSootClass("org.apache.commons.io.IOUtils")) {
+            // 处理org.apache.commons.io.IOUtils库中的copy方法
+            if (tgtMethod.getName().startsWith("copy")) {
+                if (context.getTaintedParamIndexes().contains(0)) {
+                    taintedParams.add(1);
+                }
+            }
         }
 
         // 对于特定的函数，比如union, copy，第二个参数值可能会发生变化
@@ -565,8 +576,11 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
         }
         else if (declaringCls == clsGson && tgtMethod.getName().equals("fromJson")) {
             if (invokeExpr.getArg(1) instanceof ClassConstant) {
-//                System.out.println("    Class:" + invokeExpr.getArg(1).toString());
-                this.importantInformation.add(((RefType)((ClassConstant) invokeExpr.getArg(1)).toSootType()).getSootClass());
+                if (isDebugging) {
+                    System.out.println("    Class:" + invokeExpr.getArg(1).toString() + " in fromJson");
+                }
+                Type jsonType = ((ClassConstant) invokeExpr.getArg(1)).toSootType();
+                recordBaseType(jsonType);
             }
         }
         // todo 补充其他的KV结构以及转化为Class结构的函数
@@ -588,10 +602,21 @@ public class ForwardTaintAnalysis extends ForwardFlowAnalysis<Unit, FlowSet<Valu
             }
             if (rightOp instanceof CastExpr) {
                 Type castType = ((CastExpr) rightOp).getCastType();
-                if (castType instanceof RefType) {
-                    importantInformation.add(((RefType) castType).getSootClass());
-//                    System.out.println("    Class:" + ((RefType) castType).getClassName());
+                if (isDebugging) {
+                    System.out.println("    Class:" + ((RefType) castType).getClassName() + " in Cast Expression");
                 }
+                recordBaseType(castType);
+            }
+        }
+    }
+
+    public void recordBaseType(Type type) {
+        if (type instanceof RefType) {
+            importantInformation.add(((RefType) type).getSootClass());
+        } else if (type instanceof ArrayType) {
+            Type elementType = ((ArrayType) type).getArrayElementType();
+            if (elementType instanceof RefType) {
+                this.importantInformation.add(((RefType) elementType).getSootClass());
             }
         }
     }

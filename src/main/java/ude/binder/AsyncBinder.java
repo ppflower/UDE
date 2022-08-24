@@ -206,14 +206,14 @@ public abstract class AsyncBinder extends Binder {
         boolean isWrapper = (requestValuesPassFromWrapperParams || isInvokeObjectRequestRelated) && responseHandlerValuesPassFromWrapperParams;
         currentNode.setWrapper(isWrapper);
         if (isWrapper) {
-            analyzeEdgesInfoCurrentWrapper(currentNode);
+            analyzeEdgesIntoCurrentWrapper(currentNode);
         }
         return currentNode;
     }
 
 
     // 和上面一个方法一起构建wrapper tree
-    protected void analyzeEdgesInfoCurrentWrapper(MethodNodeAsync currentNode) {
+    protected void analyzeEdgesIntoCurrentWrapper(MethodNodeAsync currentNode) {
         SootMethod currentMethod = currentNode.getMethod();
         CallGraph callGraph = Scene.v().getCallGraph();
         Iterator<Edge> edges = callGraph.edgesInto(currentMethod);

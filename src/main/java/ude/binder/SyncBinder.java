@@ -15,6 +15,7 @@ import java.util.*;
 public class SyncBinder extends Binder {
     static boolean isDebugging = false;
 
+    protected HashSet<SootMethod> wrapperMethods = new HashSet<>();
     protected void findSyncWrappersAndAnalyze(SootMethod apiInvokeMethod, Stmt apiInvokeStmt, List<Integer> requestIndexes, boolean isInvokeObjectRequestRelated) {
         if (!(apiInvokeStmt instanceof AssignStmt))
             return;
@@ -33,6 +34,8 @@ public class SyncBinder extends Binder {
         else {
             analyzeSyncWrapperTree(wrapperNodesRoot);
         }
+
+        wrapperMethods.clear();
     }
 
     protected void analyzeStandardApi(SootMethod apiInvokeMethod, Stmt apiInvokeStmt, boolean isInvokeObjectRequestRelated, List<Integer> requestIndexes, MethodNodeSync wrapperNodeRoot) {
@@ -127,6 +130,7 @@ public class SyncBinder extends Binder {
                                                            Stmt stmt,
                                                            boolean isInvokeObjectRequestRelated,
                                                            List<Integer> requestParamIndexes) {
+        wrapperMethods.add(currentMethod);
         // todo 建立调用树
         MethodNodeSync currentNode = new MethodNodeSync(currentMethod, stmt);
         InvokeExpr invokeExpr = stmt.getInvokeExpr();
@@ -175,12 +179,12 @@ public class SyncBinder extends Binder {
         boolean isWrapper = (passFromWrapperParams || invokeObjectRequestRelated) && passToWrapperResult;
         currentNode.setWrapper(isWrapper);
         if (isWrapper) {
-            analyzeEdgesInfoCurrentWrapper(currentNode);
+            analyzeEdgesIntoCurrentWrapper(currentNode);
         }
         return currentNode;
     }
 
-    protected void analyzeEdgesInfoCurrentWrapper(MethodNodeSync currentNode) {
+    protected void analyzeEdgesIntoCurrentWrapper(MethodNodeSync currentNode) {
         SootMethod currentMethod = currentNode.getMethod();
         CallGraph callGraph = Scene.v().getCallGraph();
         Iterator<Edge> edges = callGraph.edgesInto(currentMethod);
@@ -188,16 +192,14 @@ public class SyncBinder extends Binder {
         while (edges.hasNext()) {
             Edge edge = edges.next();
             SootMethod callerMethod = edge.src();
-            if (callerMethod == currentMethod) continue;
+            if (callerMethod == currentMethod) continue; // 排除递归
+            if (wrapperMethods.contains(callerMethod)) continue; // 排除递归
             Stmt callerStmt = edge.srcStmt();
             SootMethod calleeMethod = callerStmt.getInvokeExpr().getMethod();
             if (calleeMethod != currentMethod) continue; // 排除异步任务调用带来的多余的调用边
 
             if (isDebugging) {
                 System.out.println("分析方法 " + callerMethod + " ==> " + currentMethod);
-//                if (calleeMethod.getSignature().equals("<x63: boolean i(l73$a)>")) {
-//                    ForwardTaintAnalysis.isDebugging = true;
-//                }
             }
 
             MethodNodeSync callerNode = analyzeSyncNetworkApiWrappers(callerMethod, callerStmt, currentNode.isInvokeObjectRequestRelated(), currentNode.getRequestParamsIndexes());
